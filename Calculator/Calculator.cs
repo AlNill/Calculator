@@ -1,14 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Calculator
 {
+    public enum OperationType
+    {
+        Sum,
+        Subtraction,
+        Divide,
+        Multiple,
+        Sqrt
+    }
+
+
     public static class Calculator
     {
-        public static double Calculate(double operand1, double operand2)
+        public static double Calculate(double operand1, double operand2, OperationType operation)
         {
-            return 0.0
+            return operation switch
+            {
+                OperationType.Sum => operand1 + operand2,
+                OperationType.Subtraction => operand1 - operand2,
+                OperationType.Multiple => operand1 * operand2,
+                OperationType.Divide => operand2 != 0
+                    ? operand1 / operand2
+                    : throw new DivideByZeroException("Divider must be not zero"),
+                _ => throw new ArgumentException("Bad operation type!")
+            };
         }
     }
 }
