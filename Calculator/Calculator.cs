@@ -7,7 +7,8 @@ namespace Calculator
         Sum,
         Subtraction,
         Divide,
-        Multiple
+        Multiple,
+        Sqrt
     }
 
 
